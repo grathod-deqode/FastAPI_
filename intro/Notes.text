@@ -1,0 +1,30 @@
+Basic Understanding 
+
+Docker : Docker
+
+What it is: A tool that packages your app along with everything it needs (Python version, libraries, settings) into a container, so it runs the same on any machine. It solves the "works on my machine" problem.
+
+Key terms
+
+Image: a read-only blueprint (like a recipe).
+Container: a running instance of an image (like the cooked dish).
+Dockerfile: a text file with instructions to build an image.
+Docker Hub: an online registry where images are stored and shared.
+Volume: storage that outlives a container, so data isn't lost when it's deleted.
+Docker Compose: runs multiple containers together (e.g. app + database + Redis) from one docker-compose.yml.
+--------------------------------------------------------------------------------------------------------------------------
+
+Redis
+
+What it is: An in-memory key-value data store. Because data lives in RAM, reads and writes are extremely fast (sub-millisecond). It is often called a "cache," but it is also a database and message broker.
+
+Common uses
+
+Caching: store results of slow DB queries or API calls.
+Session storage: login sessions for web apps.
+Rate limiting: e.g. max 100 requests per minute per user.
+Queues: background jobs (Celery uses Redis as a broker).
+Leaderboards: with sorted sets.
+Pub/Sub: real-time messaging.
+
+------------------------------------------------------------------------------------------------------------------------
