@@ -1,11 +1,13 @@
-from fastapi import APIRouter 
+from fastapi import APIRouter ,HTTPException
 
 from models.schema import Product
 router = APIRouter()
 
 
-products = [{"name": "chai", "categorie": "bevrage" ,"price" : 10},
-            {"name": "coffee", "categorie": "bevrage" ,"price" : 150}]
+products = { 1 : {"name": "chai", "categorie": "bevrage" ,"price" : 10},
+            
+            2 :{"name": "coffee", "categorie": "bevrage" ,"price" : 150}
+            }
 
 @router.get("/")
 def wel_come():
@@ -21,3 +23,18 @@ def get_products(product : Product):
 @router.get("/products")
 def get_products():
     return products
+
+
+@router.get("/products/{id}")
+def get_product_by_id(id : int):
+
+    if id != 1:
+        raise HTTPException (
+            status_code= 404 ,
+            detail="product is not found"
+
+        )
+    return {
+        "product id " : id,
+        "prodoct details " : products[id]
+    }
