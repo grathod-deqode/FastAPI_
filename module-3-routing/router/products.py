@@ -1,4 +1,4 @@
-from fastapi import APIRouter ,HTTPException
+from fastapi import APIRouter ,HTTPException ,Header ,Cookie
 
 from models.schema import Product
 router = APIRouter()
@@ -21,8 +21,11 @@ def get_products(product : Product):
 
 
 @router.get("/products")
-def get_products():
-    return products
+def get_products(user_agent : str = Header()):
+    return {
+        "products" : products ,
+        "user agent" : user_agent
+    }
 
 
 @router.get("/products/{id}")
