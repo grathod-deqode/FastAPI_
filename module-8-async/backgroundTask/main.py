@@ -12,9 +12,16 @@ from pwdlib import PasswordHash
 from database.db import get_db, engine
 from models.model import Base, UserTable
 from models.schema import UserRegister, UserResponse
+from middleware.logging import request_logging
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 app = FastAPI()
+
+app.middleware("http")(request_logging)
 
 Base.metadata.create_all(bind=engine)
 
